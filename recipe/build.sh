@@ -3,6 +3,7 @@
 autoreconf -vfi
 mkdir build-${HOST} && pushd build-${HOST}
 ${SRC_DIR}/configure --prefix=${PREFIX}  \
+                     AR=${AR}            \
                      --with-zlib         \
                      --with-bz2lib       \
                      --with-iconv        \
