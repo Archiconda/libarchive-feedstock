@@ -23,15 +23,17 @@ build:
     pull: True
 
   ci:
-    - export LANG=en_US.UTF-8
-    - export LANGUAGE=en_US:en
-    - export LC_ALL=en_US.UTF-8
+    # - export LANG=en_US.UTF-8
+    # - export LANGUAGE=en_US:en
+    # - export LC_ALL=en_US.UTF-8
     # - yum install -y file libX11 ibXau libxcb libXdmcp libXext libXrender libXt mesa-libGL mesa-libGLU openssh-clients patch rsync util-linux wget which bzip2 xorg-x11-server-Xvfb curl
     # Need to install bzip2 for conda
     - apt-get update
     # bzip2 is necessary for conda installers to get executed
     # curl is necessary to download them
-    - apt-get install -y bzip2 curl
+    - apt-get install -y bzip2 curl locales
+    - locale-gen en_US en_US.UTF-8
+    - dpkg-reconfigure --frontend=noninteractive locales
     # instaslling locales reduces many warnings
     - curl -L -O https://github.com/Archiconda/build-tools/releases/download/0.1.2/Archiconda3Builder-0.1.2-Linux-aarch64.sh
     # Remove binutils binaries becuase you can't install centos7 without them.
