@@ -31,7 +31,7 @@ build:
     - apt-get update
     # bzip2 is necessary for conda installers to get executed
     # curl is necessary to download them
-    - apt-get install -y bzip2 curl locales binutils
+    - apt-get install -y bzip2 curl locales 
     - locale-gen en_US en_US.UTF-8
     - dpkg-reconfigure --frontend=noninteractive locales
     # instaslling locales reduces many warnings
@@ -57,7 +57,7 @@ build:
     - conda config --show
     - conda build -m .ci_support/${CONFIG}.yaml .
     - export PACKAGE_NAME=`conda build -m .ci_support/${CONFIG}.yaml . --output`
-    - # if [[ "$BINSTAR_TOKEN" != "" ]]; then anaconda -t $BINSTAR_TOKEN upload $PACKAGE_NAME ; else echo "BINSTAR_TOKEN not found, package is not being uploaded" ; fi
+    - if [[ "$BINSTAR_TOKEN" != "" ]]; then anaconda -t $BINSTAR_TOKEN upload $PACKAGE_NAME ; else echo "BINSTAR_TOKEN not found, package is not being uploaded" ; fi
 
 # disable email notification
 # of CI job result
