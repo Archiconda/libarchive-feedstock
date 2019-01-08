@@ -31,7 +31,7 @@ build:
     - apt-get update
     # bzip2 is necessary for conda installers to get executed
     # curl is necessary to download them
-    - apt-get install -y bzip2 curl locales 
+    - apt-get install -y bzip2 curl locales
     - locale-gen en_US en_US.UTF-8
     - dpkg-reconfigure --frontend=noninteractive locales
     # instaslling locales reduces many warnings
@@ -51,7 +51,7 @@ build:
     # - conda install conda-build anaconda-client --yes
     # For noarch packages
     # But for now, they all crash
-    # - conda config --add channels conda-forge
+    - conda config --add channels conda-forge
     # - conda config --add channels archiarm
     - conda --version
     - conda config --show
