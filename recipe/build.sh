@@ -3,11 +3,6 @@
 autoreconf -vfi
 mkdir build-${HOST} && pushd build-${HOST}
 ${SRC_DIR}/configure --prefix=${PREFIX}  \
-                     AR=${AR}            \
-                     --enable-bsdtar=shared \
-                     --enable-bsdcat=shared \
-                     --enable-bsdcpio=shared \
-                     --enable-static=no \
                      --with-zlib         \
                      --with-bz2lib       \
                      --with-iconv        \
@@ -20,6 +15,10 @@ ${SRC_DIR}/configure --prefix=${PREFIX}  \
                      --without-nettle    \
                      --with-xml2         \
                      --without-expat
+                     # --enable-static=no
+		     # --enable-bsdtar=shared
+                     # --enable-bsdcat=shared
+                     # --enable-bsdcpio=shared
 make -j${CPU_COUNT} ${VERBOSE_AT}
 make install
 popd
