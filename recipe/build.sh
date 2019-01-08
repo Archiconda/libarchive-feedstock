@@ -4,6 +4,10 @@ autoreconf -vfi
 mkdir build-${HOST} && pushd build-${HOST}
 ${SRC_DIR}/configure --prefix=${PREFIX}  \
                      AR=${AR}            \
+                     --enable-bsdtar=shared \
+                     --enable-bsdcat=shared \
+                     --enable-bsdcpio=shared \
+                     --enable-static=no \
                      --with-zlib         \
                      --with-bz2lib       \
                      --with-iconv        \
